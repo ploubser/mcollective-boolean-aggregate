@@ -1,12 +1,12 @@
 #!/usr/bin/env rspec
 
 require 'spec_helper'
-require File.join(File.dirname(__FILE__), File.join('../../../', 'aggregate', 'boolean.rb'))
+require File.join(File.dirname(__FILE__), File.join('../../../', 'aggregate', 'boolean_summary.rb'))
 
 module MCollective
   class Aggregate
-    describe Boolean do
-      let(:boolean){Boolean.new(:test, nil, nil, :test_action)}
+    describe Boolean_summary do
+      let(:boolean){Boolean_summary.new(:test, nil, nil, :test_action)}
 
       describe '#startup_hook' do
         it 'should correctly configure the plugin and set default argument values if none are supplied' do
@@ -16,12 +16,12 @@ module MCollective
         end
 
         it 'should correctly set a custom format' do
-          bool = Boolean.new(:test, nil, 'rspec', :test_action)
+          bool = Boolean_summary.new(:test, nil, 'rspec', :test_action)
           bool.aggregate_format.should == 'rspec'
         end
 
         it 'should correcrly set custom arguments' do
-          bool = Boolean.new(:test, {true => 'rspec_true', false => 'rspec_false'}, 'rspec', :test_action)
+          bool = Boolean_summary.new(:test, {true => 'rspec_true', false => 'rspec_false'}, 'rspec', :test_action)
         end
       end
 

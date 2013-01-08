@@ -1,4 +1,4 @@
-metadata :name => "Boolean",
+metadata :name => "Boolean_summary",
             :description => "Aggregate function that will transform true/false values into predefined strings.",
             :author => "P. Loubser <pieter.loubser@puppetlabs.com>",
             :license => "ASL 2.0",

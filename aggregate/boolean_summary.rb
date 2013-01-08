@@ -1,12 +1,17 @@
 module MCollective
   class Aggregate
-    class Boolean<Base
+    class Boolean_summary<Base
       def startup_hook
         @result[:value] = {}
         @result[:type] = :collection
 
         # set default aggregate_format if it is undefined
         @arguments = {true => 'True', false => 'False'} unless @arguments
+
+        # Support boolean and symbol arguments
+        @arguments[true] = @arguments.delete(:true) if @arguments.include?(:true)
+        @arguments[false] = @arguments.delete(:false) if @arguments.include?(:false)
+
         @aggregate_format = "%5s = %s" unless @aggregate_format
       end
 
